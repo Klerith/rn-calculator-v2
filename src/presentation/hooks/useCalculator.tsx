@@ -3,7 +3,40 @@ import { useState } from 'react';
 
 export const useCalculator = () => {
 
-  const [ number, setNumber ] = useState('0')
+  const [ number, setNumber ] = useState('0');
+
+
+  const clean = () => {
+    setNumber('0');
+  }
+
+  // Borrar el último número
+  const deleteOperation = () => {
+    
+    let currentSign = '';
+    let temporalNumber = number;
+
+    if ( number.includes('-') ) {
+      currentSign = '-';
+      temporalNumber = number.substring(1); // 88
+    }
+
+    if ( temporalNumber.length > 1 ) {
+      return setNumber( currentSign + temporalNumber.slice(0,-1) ); // 
+    }
+
+    setNumber('0');
+
+  }
+
+
+  const toggleSign = () =>{
+    if ( number.includes('-') ) {
+      return setNumber( number.replace('-','') )
+    }
+
+    setNumber( '-' + number );
+  }
 
 
   const buildNumber = ( numberString: string ) => {
@@ -51,6 +84,9 @@ export const useCalculator = () => {
 
     // Methods
     buildNumber,
+    toggleSign,
+    clean,
+    deleteOperation,
   }
 }
 
