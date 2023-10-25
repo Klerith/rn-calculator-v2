@@ -117,6 +117,39 @@ export const useCalculator = () => {
   };
 
 
+  const calculateResult = () => {
+      
+    const num1 = Number( number ); //NaN
+    const num2 = Number( prevNumber ); //NaN
+
+    switch( lastOperation.current ) {
+      
+      case Operator.add:
+        setNumber( `${ num1 + num2 }` );
+        break;
+
+      case Operator.subtract:
+        setNumber( `${ num2 - num1 }` );
+        break;
+
+      case Operator.multiply:
+        setNumber( `${ num1 * num2 }` );
+        break;
+
+      case Operator.divide:
+        setNumber( `${ num2 / num1 }` );
+        break;
+
+
+
+      default:
+        throw new Error('Operation not implemented');
+    }
+
+
+    setPrevNumber('0');
+  }
+
 
 
   return {
@@ -133,6 +166,7 @@ export const useCalculator = () => {
     multiplyOperation,
     subtractOperation,
     addOperation,
+    calculateResult,
   };
 }
 
