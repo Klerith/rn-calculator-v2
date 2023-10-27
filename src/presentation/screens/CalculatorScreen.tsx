@@ -37,6 +37,12 @@ export const CalculatorScreen = () => {
               </Text>
             )
         }
+        {/* <Text
+                adjustsFontSizeToFit
+                numberOfLines={ 1 }
+                style={ styles.subResult }>
+                {  prevNumber }
+              </Text> */}
       </View>
 
 
